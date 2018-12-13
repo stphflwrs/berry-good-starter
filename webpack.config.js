@@ -1,39 +1,41 @@
-const webpack = require('webpack'),
-      path = require('path'),
-      ExtractTextPlugin = require('extract-text-webpack-plugin');
+const { resolve } = require('path');
+
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const env = process.env.NODE_ENV;
 
 module.exports = {
-  devtool: env === 'development' ? 'source-map' : false,
+  mode: env === 'development' ? 'development' : 'production',
+  devtool: 'source-map',
+  entry: resolve(__dirname, 'src/main.ts'),
   output: {
     filename: env === 'development' ? '[name].js' : '[name].[hash].js',
+    path: resolve(__dirname, 'bundle'),
   },
   resolve: {
     alias: {
-      'styles': path.resolve(__dirname, 'src', 'styles'),
-    }
+      'styles': resolve(__dirname, 'src', 'styles'),
+    },
   },
   module: {
     rules: [{
       test: /\.sass$/,
-      use: ExtractTextPlugin.extract({
-        use: [{
-          loader: 'css-loader'
-        }, {
-          loader: 'sass-loader'
-        }],
-        fallback: 'style-loader'
-      })
+      use: [{
+        loader: 'css-loader',
+      }, {
+        loader: 'sass-loader',
+      }],
     }, {
       test: /.ts$/,
       use: [{
-        loader: 'ts-loader'
+        loader: 'ts-loader',
       }],
-      exclude: /node_modules/
-    }]
+      exclude: /node_modules/,
+    }],
   },
   plugins: [
-    new ExtractTextPlugin(env === 'development' ? '[name].css' : '[name].[contentHash].css')
-  ]
+    new HtmlWebpackPlugin({
+      template: resolve(__dirname, 'src/index.html'),
+    }),
+  ],
 };

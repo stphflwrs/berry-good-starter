@@ -1,11 +1,11 @@
 {
-  "name": "nami.cat",
-  "version": "0.0.1",
+  "name": "berry-good-starter",
+  "version": "0.0.0-development",
   "description": "Access me at nami.cat!",
   "main": "src/app.js",
   "scripts": {
-    "start": "NODE_ENV=development gulp",
-    "build": "NODE_ENV=production gulp build"
+    "dev": "NODE_ENV=development webpack-dev-server",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -13,25 +13,20 @@
   },
   "author": "ahuerta0686@gmail.com",
   "bugs": {
-    "url": "https://github.com/ahuerta0686/nami.cat/issues"
+    "url": "https://github.com/ahuerta0686/berry-good-starter/issues"
   },
-  "homepage": "https://github.com/ahuerta0686/nami.cat#readme",
+  "license": "MIT",
+  "homepage": "https://github.com/ahuerta0686/berry-good-starter#readme",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "css-loader": "^0.28.7",
-    "del": "^3.0.0",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "gulp": "^3.9.1",
-    "gulp-inject": "^4.3.0",
-    "gulp-server-livereload": "^1.9.2",
-    "node-sass": "^4.7.2",
-    "r": "0.0.5",
-    "sass-loader": "^6.0.6",
-    "style-loader": "^0.19.0",
-    "ts-loader": "^3.2.0",
-    "typescript": "^2.6.2",
-    "webpack": "^3.9.1",
-    "webpack-stream": "^4.0.0"
+    "css-loader": "^2.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^5.3.1",
+    "typescript": "^3.2.2",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
   }
 }
